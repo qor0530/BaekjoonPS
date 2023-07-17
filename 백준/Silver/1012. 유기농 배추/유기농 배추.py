@@ -15,12 +15,11 @@ for _ in range(T):
     for x, y in pos:
         Q = []
         if (x, y) not in visited:
+            visited.append((x, y))
             Q.append((x, y))
             count += 1
         while Q:
             pos_x, pos_y = Q.pop(0)
-            if (pos_x, pos_y) not in visited:
-                visited.append((pos_x, pos_y))
             for new_x, new_y in [(0, 1),(1, 0), (0, -1), (-1, 0)]:
                 nx = pos_x + new_x
                 ny = pos_y + new_y
