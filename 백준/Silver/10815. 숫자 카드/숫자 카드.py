@@ -1,18 +1,12 @@
-from sys import stdin
+import bisect
+N = int(input())
+number_card = list(map(int, input().split()))
+number_card.sort()
 
-n = int(stdin.readline())
-nlist = list(map(int, stdin.readline().split()))
-m = int(stdin.readline())
-mlist = list(map(int, stdin.readline().split()))
-nlist.sort()
-
-mdict = {value: 0 for value in mlist}
-
-for i in nlist:
-    if i in mdict:
-        mdict[i] = 1
-
-cardchar = ""
-for i in mlist:
-    cardchar += f"{mdict[i]} "
-print(cardchar)
+M = int(input())
+card_list = list(map(int, input().split()))
+for card in card_list:
+    if (bisect.bisect_right(number_card, card) - bisect.bisect_left(number_card, card)) == 1:
+        print(1, end=' ')
+    else:
+        print(0, end=' ')
