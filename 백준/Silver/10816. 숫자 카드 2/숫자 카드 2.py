@@ -1,18 +1,17 @@
-from sys import stdin
+from collections import defaultdict
 
-n = int(stdin.readline())
-nlist = list(map(int, stdin.readline().split()))
-m = int(stdin.readline())
-mlist = list(map(int, stdin.readline().split()))
-nlist.sort()
+n = int(input())
 
-mdict = {value: 0 for value in mlist}
+card = list(input().split())
 
-for i in nlist:
-    if i in mdict:
-        mdict[i] += 1
+cards = defaultdict(int)
 
-cardchar = ""
-for i in mlist:
-    cardchar += f"{mdict[i]} "
-print(cardchar)
+for c in card:
+    cards[c] += 1
+
+m = int(input())
+
+show = list(input().split())
+
+for s in show:
+    print(cards[s], end=' ')
